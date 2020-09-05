@@ -1,6 +1,4 @@
 fertilizer <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-09-01/cereal_crop_yield_vs_fertilizer_application.csv')
-df<- fertilizer
-fertilizer<- df
 library(dplyr)
 library(ggplot2)
 library(mapdata)
@@ -26,7 +24,7 @@ america<-  dplyr::filter(mapa_mundo,region %in% lista)
 
 ## Unimos los datos de la base de fertilizantes a las coordenadas de cada pais
 i=1
-for (a in 1:10) {
+for (a in 1:12) {
   while (fertilizer[a,1]== america[i,5]) {
     america[i,7]<- fertilizer[a,5]
     i= i+1 }
@@ -45,8 +43,8 @@ mapa_america<- america %>%
     axis.title = element_blank(),
     axis.ticks = element_blank(),
     panel.background = element_rect(colour= "grey30", size= 1)) +
-  labs(title= "Uso de fertilizante en América del Sur en 2017",
-       subtitle = "Kg de Nitrógeno por hectareas",
+  labs(title= "Uso de fertilizante en AmÃ©rica del Sur en 2017",
+       subtitle = "Kg de NitrÃ³geno por hectareas",
        caption = "Fuente: Our World in Data
   Hecho por: @analyticsrl")+
   theme(plot.title=element_text(size=14, 
